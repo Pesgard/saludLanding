@@ -1,43 +1,62 @@
- <!-- Packages Section -->
- <section class="py-16">
-    <div class="container mx-auto">
-      <h2 class="text-3xl font-bold text-center text-textPrimary mb-10">Paquetes Personalizados</h2>
-      <div class="grid md:grid-cols-3 gap-8">
-        <!-- Básico -->
-        <div class="bg-white p-6 rounded-lg shadow-card">
-          <h3 class="text-xl font-bold text-textPrimary">Básico</h3>
-          <p class="text-textSecondary mt-2">Servicios esenciales para empresas pequeñas</p>
-          <ul class="mt-4 space-y-2">
-            <li>✅ Exámenes médicos básicos</li>
-            <li>✅ Pruebas de laboratorio</li>
-            <li>✅ Capacitación básica</li>
-          </ul>
-          <button class="bg-primary text-white px-4 py-2 mt-6 rounded-md w-full">Solicitar Cotización</button>
-        </div>
-        <!-- Empresarial -->
-        <div class="bg-white p-6 rounded-lg shadow-card border-2 border-secondary">
-          <h3 class="text-xl font-bold text-textPrimary">Empresarial <span class="bg-secondary text-black text-sm py-1 px-2 rounded">Recomendado</span></h3>
-          <p class="text-textSecondary mt-2">Solución completa para medianas empresas</p>
-          <ul class="mt-4 space-y-2">
-            <li>✅ Todos los servicios básicos</li>
-            <li>✅ Laboratorio móvil</li>
-            <li>✅ Software de seguimiento</li>
-            <li>✅ Capacitación avanzada</li>
-          </ul>
-          <button class="bg-primary text-white px-4 py-2 mt-6 rounded-md w-full">Solicitar Cotización</button>
-        </div>
-        <!-- Industrial -->
-        <div class="bg-white p-6 rounded-lg shadow-card">
-          <h3 class="text-xl font-bold text-textPrimary">Industrial</h3>
-          <p class="text-textSecondary mt-2">Servicios completos para grandes industrias</p>
-          <ul class="mt-4 space-y-2">
-            <li>✅ Todos los servicios empresariales</li>
-            <li>✅ Unidad móvil dedicada</li>
-            <li>✅ Reportes personalizados</li>
-            <li>✅ Atención 24/7</li>
-          </ul>
-          <button class="bg-primary text-white px-4 py-2 mt-6 rounded-md w-full">Solicitar Cotización</button>
-        </div>
+---
+import PackageCard from "$lib/components/cards/PackageCard.svelte";
+---
+
+<section
+  class="w-full border-t bg-gray-50 py-12 md:py-24 lg:py-32"
+  id="paquetes"
+>
+  <div class="container px-4 md:px-6">
+    <div
+      class="flex flex-col items-center justify-center space-y-4 text-center"
+    >
+      <div class="space-y-2">
+        <h2
+          class="text-3xl font-bold tracking-tighter text-[#0033A0] sm:text-4xl md:text-5xl"
+        >
+          Paquetes Personalizados
+        </h2>
+        <p
+          class="mx-auto max-w-[700px] text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed"
+        >
+          Diseñamos soluciones adaptadas a las necesidades específicas de tu
+          empresa
+        </p>
       </div>
     </div>
-  </section>
+    <div
+      class="mx-auto grid max-w-5xl grid-cols-1 gap-6 py-12 md:grid-cols-3"
+    >
+      <PackageCard
+        title="Básico"
+        description="Servicios esenciales para empresas pequeñas"
+        features={[
+          "Exámenes médicos básicos",
+          "Pruebas de laboratorio",
+          "Capacitación básica",
+        ]}
+      />
+      <PackageCard
+        title="Empresarial"
+        description="Solución completa para medianas empresas"
+        features={[
+          "Todos los servicios básicos",
+          "Laboratorio móvil",
+          "Software de seguimiento",
+          "Capacitación avanzada",
+        ]}
+        highlighted
+      />
+      <PackageCard
+        title="Industrial"
+        description="Servicios completos para grandes industrias"
+        features={[
+          "Todos los servicios empresariales",
+          "Unidad móvil dedicada",
+          "Reportes personalizados",
+          "Atención 24/7",
+        ]}
+      />
+    </div>
+  </div>
+</section>

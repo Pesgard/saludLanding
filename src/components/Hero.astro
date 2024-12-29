@@ -1,8 +1,37 @@
-  <!-- Hero Section -->
-  <section class="bg-gradient-to-r from-gray-200 via-gray-300 to-gray-400 py-20 text-center">
-    <div class="container mx-auto">
-      <h1 class="text-4xl font-bold text-textPrimary">Cuidamos la Salud de tu <span class="text-secondary">EMPRESA</span></h1>
-      <p class="text-textSecondary mt-4">Nos encargamos de la capacitación, seguridad y salud de tu empresa</p>
-      <button class="bg-secondary text-black px-6 py-3 mt-6 rounded-md font-bold">Contactar Ahora</button>
+---
+import { Button } from "$lib/components/ui/button/index.js";
+---
+
+<header class="relative pt-16" id="inicio">
+  <div class="absolute inset-0">
+    <img
+      src="/images/Hero.jpg"
+      alt="Centro de diagnóstico de salud ocupacional en Los Mochis"
+      class="absolute inset-0 w-full h-full object-cover"
+    />
+    <div class="absolute inset-0 bg-gradient-to-r from-black/50 to-transparent">
     </div>
-  </section>
+  </div>
+  <div class="container relative px-4 py-32 md:py-48">
+    <div class="max-w-2xl text-white">
+      <h1 class="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl">
+        Cuidamos la Salud de tu
+        <span class="block text-[#FFE100]">EMPRESA</span>
+      </h1>
+      <p class="mt-4 text-xl">
+        Nos encargamos de la capacitación, seguridad y salud de tu empresa
+      </p>
+      <div class="mt-8 flex gap-4">
+        <Button class="bg-[#FFE100] text-[#0033A0] hover:bg-[#FFE100]/90">
+          Contactar Ahora
+        </Button>
+        <Button
+          variant="outline"
+          class="border-white text-white hover:bg-white/10"
+        >
+          Nuestros Servicios
+        </Button>
+      </div>
+    </div>
+  </div>
+</header>
