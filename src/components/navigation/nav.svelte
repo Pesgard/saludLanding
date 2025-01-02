@@ -17,7 +17,6 @@
 
   let sections = [
     { id: "inicio", label: "Inicio" },
-    { id: "servicios", label: "Servicios" },
     { id: "testimonios", label: "Testimonios" },
     { id: "contacto", label: "Contacto" },
   ];
@@ -64,7 +63,8 @@
           </li>
         {/each}
         <li class="relative group">
-          <span class="cursor-pointer hover:text-blue-600 transition"
+          <span
+            class="cursor-pointer font-semibold hover:text-blue-600 transition"
             >Servicios</span
           >
           <div
@@ -95,11 +95,7 @@
     </button>
 
     <!-- Mobile Navigation -->
-    <button
-      class="md:hidden"
-      on:click={toggleMenu}
-      aria-label="Toggle menu"
-    >
+    <button class="md:hidden" on:click={toggleMenu} aria-label="Toggle menu">
       <svg
         class="h-6 w-6"
         xmlns="http://www.w3.org/2000/svg"
