@@ -1,0 +1,87 @@
+---
+import Carousel from "./Carousel.astro";
+
+const images = [
+    {
+        src: "/images/carousel/alcoholometria.jpg",
+        alt: "Alcoholometría",
+        title: "Servicio de Alcoholometría",
+        description:
+            "Pruebas precisas de alcoholemia realizadas por profesionales certificados para garantizar la seguridad y el cumplimiento normativo.",
+    },
+    {
+        src: "/images/carousel/2.jpg",
+        alt: "Consulta Médica",
+        title: "Consulta Médica General",
+        description:
+            "Atención médica integral con profesionales altamente calificados para el diagnóstico y tratamiento de diversas condiciones de salud.",
+    },
+    {
+        src: "/images/carousel/3.jpg",
+        alt: "Laboratorio Clínico",
+        title: "Laboratorio Clínico Especializado",
+        description:
+            "Análisis clínicos de última generación con resultados precisos y rápidos para un diagnóstico efectivo y confiable.",
+    },
+    {
+        src: "/images/carousel/4.jpg",
+        alt: "Servicios de Emergencia",
+        title: "Atención de Emergencias",
+        description:
+            "Servicio de emergencias médicas disponible con personal capacitado para atender situaciones críticas de manera inmediata.",
+    },
+    {
+        src: "/images/carousel/5.jpg",
+        alt: "Servicios Especializados",
+        title: "Servicios Médicos Especializados",
+        description:
+            "Atención especializada en diferentes áreas de la medicina para brindar un cuidado integral y personalizado.",
+    },
+    {
+        src: "/images/carousel/6.jpg",
+        alt: "Certificados Médicos",
+        title: "Certificados Médicos",
+        description:
+            "Expedición de certificados médicos oficiales para diversos trámites y requisitos legales.",
+    },
+    {
+        src: "/images/carousel/7.jpg",
+        alt: "Exámenes Médicos",
+        title: "Exámenes Médicos Ocupacionales",
+        description:
+            "Evaluaciones médicas completas para el ámbito laboral, garantizando la salud y seguridad en el trabajo.",
+    },
+    {
+        src: "/images/carousel/8.jpg",
+        alt: "Servicios de Diagnóstico",
+        title: "Servicios de Diagnóstico Avanzado",
+        description:
+            "Equipamiento moderno y tecnología de punta para diagnósticos precisos y tratamientos efectivos.",
+    },
+    {
+        src: "/images/carousel/9.jpg",
+        alt: "Atención Preventiva",
+        title: "Medicina Preventiva",
+        description:
+            "Programas de prevención y control de enfermedades para mantener una salud óptima.",
+    },
+    {
+        src: "/images/carousel/10.jpg",
+        alt: "Servicios de Rehabilitación",
+        title: "Rehabilitación y Terapia",
+        description:
+            "Servicios de rehabilitación física y terapia para una recuperación efectiva y mejora de la calidad de vida.",
+    },
+    {
+        src: "/images/carousel/11.jpg",
+        alt: "Atención Integral",
+        title: "Atención Médica Integral",
+        description:
+            "Servicios médicos completos enfocados en el bienestar total del paciente, desde la prevención hasta el tratamiento.",
+    },
+];
+---
+
+<div class="container mx-auto px-4">
+    <Carousel images={images} />
+</div>

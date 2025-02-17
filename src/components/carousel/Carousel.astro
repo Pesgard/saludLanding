@@ -1,0 +1,131 @@
+---
+interface Props {
+  images: {
+    src: string;
+    alt: string;
+    title: string;
+    description: string;
+  }[];
+}
+
+const { images } = Astro.props;
+---
+
+<div class="relative w-full max-w-4xl mx-auto">
+  <div class="carousel-container overflow-hidden relative rounded-xl">
+    <div class="carousel-track flex transition-transform duration-500 ease-in-out">
+      {
+        images.map((image) => (
+          <div class="carousel-slide w-full flex-shrink-0 relative">
+            <img
+              src={image.src}
+              alt={image.alt}
+              class="w-full h-[500px] object-cover brightness-75"
+            />
+            <div class="absolute bottom-0 left-0 right-0 p-8 bg-gradient-to-t from-black/80 to-transparent text-white">
+              <h2 class="text-3xl font-bold mb-3">{image.title}</h2>
+              <p class="text-lg leading-relaxed max-w-3xl">{image.description}</p>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+  
+  <button
+    class="carousel-prev absolute left-4 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-gray-800 p-2 rounded-full shadow-lg z-10"
+    aria-label="Previous slide"
+  >
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke-width="1.5"
+      stroke="currentColor"
+      class="w-6 h-6"
+    >
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        d="M15.75 19.5L8.25 12l7.5-7.5"
+      />
+    </svg>
+  </button>
+  
+  <button
+    class="carousel-next absolute right-4 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-gray-800 p-2 rounded-full shadow-lg z-10"
+    aria-label="Next slide"
+  >
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke-width="1.5"
+      stroke="currentColor"
+      class="w-6 h-6"
+    >
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        d="M8.25 4.5l7.5 7.5-7.5 7.5"
+      />
+    </svg>
+  </button>
+</div>
+
+<script>
+  class Carousel {
+    private track: HTMLElement;
+    private slides: NodeListOf<Element>;
+    private currentIndex: number;
+    private autoAdvanceInterval!: number;
+
+    constructor(element: HTMLElement) {
+      this.track = element.querySelector('.carousel-track') as HTMLElement;
+      this.slides = element.querySelectorAll('.carousel-slide');
+      this.currentIndex = 0;
+      
+      const prevButton = element.querySelector('.carousel-prev') as HTMLButtonElement;
+      const nextButton = element.querySelector('.carousel-next') as HTMLButtonElement;
+      
+      this.setupNavigation(prevButton, nextButton);
+      this.startAutoAdvance();
+    }
+    
+    private updateSlidePosition() {
+      this.track.style.transform = `translateX(-${this.currentIndex * 100}%)`;
+    }
+    
+    private setupNavigation(prevButton: HTMLButtonElement, nextButton: HTMLButtonElement) {
+      prevButton.addEventListener('click', () => {
+        this.stopAutoAdvance();
+        this.currentIndex = (this.currentIndex - 1 + this.slides.length) % this.slides.length;
+        this.updateSlidePosition();
+        this.startAutoAdvance();
+      });
+      
+      nextButton.addEventListener('click', () => {
+        this.stopAutoAdvance();
+        this.currentIndex = (this.currentIndex + 1) % this.slides.length;
+        this.updateSlidePosition();
+        this.startAutoAdvance();
+      });
+    }
+    
+    private startAutoAdvance() {
+      this.autoAdvanceInterval = setInterval(() => {
+        this.currentIndex = (this.currentIndex + 1) % this.slides.length;
+        this.updateSlidePosition();
+      }, 4000);
+    }
+    
+    private stopAutoAdvance() {
+      clearInterval(this.autoAdvanceInterval);
+    }
+  }
+
+  // Initialize all carousels on the page
+  document.querySelectorAll('.carousel-container').forEach((carousel) => {
+    new Carousel(carousel.parentElement as HTMLElement);
+  });
+</script>
