@@ -2,10 +2,10 @@
 import Layout from "../layouts/Layout.astro";
 import Hero from "../components/Hero.astro";
 import Packages from "../components/Packages.astro";
-import Nav from "../components/navigation/nav.svelte";
 import Services from "../components/Services.svelte";
 import Software from "$lib/components/Software.astro";
 import Laboratory from "$lib/components/Laboratory.astro";
+import NavBar from "$lib/components/navigation/NavBar.astro";
 import "$lib/styles/app.css";
 import ImagesList from "$lib/components/carousel/ImagesList.astro";
 import Testimonials from "$lib/components/Testimonials.astro";
@@ -14,7 +14,7 @@ import Footer from "$lib/components/Footer.astro";
 ---
 
 <Layout>
-  <Nav />
+  <NavBar />
   <Hero />
   <Services />
   <ImagesList />

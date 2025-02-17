@@ -1,14 +1,185 @@
-<!-- Navbar -->
-<header class="bg-white shadow-md">
-  <div class="container mx-auto flex items-center justify-between p-4">
-    <div class="text-primary font-bold text-xl">Ambulancias Salud</div>
-    <nav class="space-x-4">
-      <a href="#" class="text-textPrimary hover:text-primary">Inicio</a>
-      <a href="#" class="text-textPrimary hover:text-primary">Testimonios</a>
-      <a href="#" class="text-textPrimary hover:text-primary">Contacto</a>
+---
+const sections = [
+  { id: "inicio", label: "Inicio" },
+  { id: "testimonios", label: "Testimonios" },
+];
+
+const services = [
+  {
+    id: "laboratorio",
+    title: "Laboratorio Móvil",
+    description: "Servicios médicos móviles para empresas",
+  },
+  {
+    id: "paquetes",
+    title: "Paquetes Personalizados",
+    description: "Soluciones adaptadas a sus necesidades",
+  },
+  {
+    id: "software",
+    title: "Software Médico",
+    description: "Gestión integral de servicios médicos",
+  },
+  {
+    id: "servicios",
+    title: "Servicios Especializados",
+    description: "Amplia gama de servicios médicos",
+  },
+];
+---
+
+<script>
+  let isOpen = false;
+
+  // Function to handle smooth scrolling
+  const smoothScroll = (sectionId: string) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
+  // Mobile menu toggle
+  document.querySelector('#mobile-menu-button')?.addEventListener('click', () => {
+    isOpen = !isOpen;
+    const mobileMenu = document.querySelector('#mobile-menu');
+    if (mobileMenu) {
+      mobileMenu.classList.toggle('hidden');
+    }
+  });
+
+  // Mobile navigation
+  document.querySelectorAll('[data-scroll]').forEach(button => {
+    button.addEventListener('click', (e) => {
+      const sectionId = (e.currentTarget as HTMLElement).dataset.section;
+      if (sectionId) {
+        smoothScroll(sectionId);
+      }
+      const mobileMenu = document.querySelector('#mobile-menu');
+      if (mobileMenu) {
+        mobileMenu.classList.add('hidden');
+      }
+    });
+  });
+
+  // Desktop navigation
+  document.querySelectorAll('[data-desktop-scroll]').forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      const sectionId = (e.currentTarget as HTMLElement).dataset.section;
+      if (sectionId) {
+        smoothScroll(sectionId);
+      }
+    });
+  });
+</script>
+
+<div class="fixed top-0 z-50 w-full border-b bg-white/80 backdrop-blur-sm">
+  <div class="container flex h-16 items-center justify-between px-4">
+    <a href="/" class="flex items-center space-x-2">
+      <img src="/favicon.png" alt="Logo" class="h-8 w-auto" />
+      <span class="font-bold text-[#0033A0]">Ambulancias Salud</span>
+    </a>
+
+    <!-- Desktop Navigation -->
+    <nav class="hidden md:flex">
+      <ul class="flex space-x-4">
+        {
+          sections.map((section) => (
+            <li>
+              <a
+                href={`#${section.id}`}
+                data-desktop-scroll
+                data-section={section.id}
+                class="hover:text-blue-600 transition cursor-pointer"
+              >
+                {section.label}
+              </a>
+            </li>
+          ))
+        }
+        <li class="relative group">
+          <span class="cursor-pointer font-semibold hover:text-blue-600 transition">
+            Servicios
+          </span>
+          <div class="absolute left-0 hidden w-64 bg-white shadow-md group-hover:block">
+            <ul class="p-4 grid gap-3">
+              {
+                services.map((service) => (
+                  <li>
+                    <a
+                      href={`#${service.id}`}
+                      data-desktop-scroll
+                      data-section={service.id}
+                      class="block p-3 rounded-md hover:bg-gray-100 transition"
+                    >
+                      <div class="text-sm font-medium">{service.title}</div>
+                      <p class="text-sm text-gray-600">{service.description}</p>
+                    </a>
+                  </li>
+                ))
+              }
+            </ul>
+          </div>
+        </li>
+      </ul>
     </nav>
-    <button class="bg-secondary text-black px-4 py-2 rounded-md"
-      >Contactar</button
+
+    <a
+      href="https://wa.me/+526681160718"
+      class="hidden bg-[#FFE100]/75 text-[#0033A0] hover:bg-[#FFE100] md:inline-flex px-4 py-2 rounded"
     >
+      Contactar
+    </a>
+
+    <!-- Mobile Navigation -->
+    <button
+      id="mobile-menu-button"
+      class="md:hidden"
+      aria-label="Toggle menu"
+    >
+      <svg
+        class="h-6 w-6"
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M4 6h16M4 12h16m-7 6h7"
+        />
+      </svg>
+    </button>
   </div>
-</header>
+
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="hidden absolute top-16 right-0 w-full bg-white shadow-md">
+    <nav class="flex flex-col p-4">
+      {
+        sections.map((section) => (
+          <button
+            data-scroll
+            data-section={section.id}
+            class="text-left hover:text-blue-600 transition py-2"
+          >
+            {section.label}
+          </button>
+        ))
+      }
+      {
+        services.map((service) => (
+          <button
+            data-scroll
+            data-section={service.id}
+            class="text-left hover:text-blue-600 transition py-2"
+          >
+            {service.title}
+          </button>
+        ))
+      }
+    </nav>
+  </div>
+</div>

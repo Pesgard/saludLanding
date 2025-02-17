@@ -21,17 +21,22 @@ import { Button } from "$lib/components/ui/button/index.js";
       <p class="mt-4 text-xl">
         Nos encargamos de la capacitación, seguridad y salud de tu empresa
       </p>
-      <a href="https://wa.me/+526681160718" class="mt-8 flex gap-4">
-        <Button class="bg-[#FFE100] text-[#0033A0] hover:bg-[#FFE100]/90">
-          Contactar Ahora
-        </Button>
-        <Button
-          variant="outline"
-          class="border-white text-white bg-white/10 hover:bg-white hover:text-black"
-        >
-          Nuestros Servicios
-        </Button>
-      </a>
+      <div class="mt-8 flex gap-4">
+        <a href="https://wa.me/+526681160718" target="_blank" rel="noopener noreferrer">
+          <Button class="bg-[#FFE100] text-[#0033A0] hover:bg-[#FFE100]/90">
+            Contactar Ahora
+          </Button>
+        </a>
+
+        <a href="#servicios">
+          <Button
+            variant="outline"
+            class="border-white text-white bg-white/10 hover:bg-white hover:text-black"
+          >
+            Nuestros Servicios
+          </Button>
+        </a>
+      </div>
     </div>
   </div>
 </header>
