@@ -18,7 +18,6 @@
   let sections = [
     { id: "inicio", label: "Inicio" },
     { id: "testimonios", label: "Testimonios" },
-    { id: "contacto", label: "Contacto" },
   ];
 
   let services = [
@@ -88,11 +87,12 @@
       </ul>
     </nav>
 
-    <button
-      class="hidden bg-[#FFE100] text-[#0033A0] hover:bg-[#FFE100]/90 md:inline-flex px-4 py-2 rounded"
+    <a
+      href="https://wa.me/+526681160718"
+      class="hidden bg-[#FFE100]/75 text-[#0033A0] hover:bg-[#FFE100] md:inline-flex px-4 py-2 rounded"
     >
       Contactar
-    </button>
+  </a>
 
     <!-- Mobile Navigation -->
     <button class="md:hidden" on:click={toggleMenu} aria-label="Toggle menu">
